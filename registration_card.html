@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자전거 등록증</title>
+    <link rel="stylesheet" href="registration_card.css">
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="card-container">
+        <div id="qrCode" class="qr-code"></div> <!-- Ensure this ID matches the one used in your script -->
+        <div class="registration-info">
+            <p id="address" class="info address"></p>
+            <p id="registrationCode" class="info registration-code"></p>
+            <p id="ownerName" class="info owner-name"></p>
+        </div>
+    </div>
+    
+    <script src="qr_code_script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+
+        fetch(`/api/registration_info?code=${code}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ownerName').textContent = data.ownerName;
+                document.getElementById('address').textContent = data.address;
+                document.getElementById('registrationCode').textContent = data.registrationCode;
+                generateQRCode(data.registrationCode); // QR 코드 생성 함수 호출
+            })
+            .catch(error => console.error('Failed to fetch registration info:', error));
+    });
+
+    function generateQRCode(registrationCode) {
+        var qrCodeDiv = document.getElementById("qrCode");
+        qrCodeDiv.innerHTML = ""; // 기존 QR 코드 삭제
+        var qr = new QRCode(qrCodeDiv, {
+            text: registrationCode,
+            width: 128,
+            height: 128,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    }
+    </script>
+</body>
+</html>
