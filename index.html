@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bicycle Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="img/pedarling_logo.png" alt="로고" id="logo">
+        <h1>Bicycle Registration Form</h1>
+    </header>
+    <div class="container">
+        <div class="form-section">
+            <!-- 폼 요소들 -->
+        </div>
+        <div class="info-section">
+            <!-- 자전거 등록 설명 및 이미지 -->
+        </div>
+    </div>
+    <h1>Bicycle Registration Form</h1>
+    <form id="registrationForm">
+        <label for="serialNumber">Serial Number:</label>
+        <input type="text" id="serialNumber" name="serialNumber" required><br>
+
+        <label for="ownerName">소유자:</label>
+        <input type="text" id="ownerName" name="ownerName" required><br>
+
+        <label for="city">시/도:</label>
+        <select id="city" name="city" required>
+            <option value="서울">서울</option>
+            <option value="부산">부산</option>
+            <option value="대구">대구</option>
+            <option value="인천">인천</option>
+            <option value="광주">광주</option>
+            <option value="대전">대전</option>
+            <option value="울산">울산</option>
+            <option value="세종">세종</option>
+            <option value="경기">경기</option>
+            <option value="강원">강원</option>
+            <option value="충북">충북</option>
+            <option value="충남">충남</option>
+            <option value="전북">전북</option>
+            <option value="전남">전남</option>
+            <option value="경북">경북</option>
+            <option value="경남">경남</option>
+            <option value="제주">제주</option>
+        </select><br>
+
+        <label for="district">구:</label>
+        <select id="district" name="district" required>
+            <!-- 자바스크립트를 사용하여 옵션을 동적으로 삽입합니다 -->
+        </select><br>
+
+        <label for="phoneNumber">전화번호:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+
+        <label for="bikeType">자전거 종류:</label>
+        <select id="bikeType" name="bikeType" required>
+            <option value="로드바이크">로드바이크</option>
+            <option value="그래블바이크">그래블바이크</option>
+            <option value="산악자전거">산악자전거</option>
+            <option value="폴딩바이크">폴딩바이크</option>
+            <option value="미니벨로">미니벨로</option>
+            <option value="생활자전거(일반자전거)">생활자전거(일반자전거)</option>
+            <option value="전기자전거">전기자전거</option>
+            <option value="전기킥보드/전기스쿠터">전기킥보드/전기스쿠터</option>
+            <option value="그 외">그 외</option>
+        </select><br>
+
+        <button type="submit">Register Bicycle</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
